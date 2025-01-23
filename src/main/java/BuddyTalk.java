@@ -1,11 +1,13 @@
 public class BuddyTalk {
     public static void main(String[] args) {
-        String text = "____________________________________________________________\n"
-                + "Hello! I'm BuddyTalk\n"
-                + "What can I do for you?\n"
-                + "____________________________________________________________\n"
-                + "Bye. Hope to see you again soon!\n"
-                + "____________________________________________________________\n";
+        String text = """
+                ____________________________________________________________
+                Hello! I'm BuddyTalk
+                What can I do for you?
+                ____________________________________________________________
+                Bye. Hope to see you again soon!
+                ____________________________________________________________
+                """;
         System.out.println(text);
     }
 }
