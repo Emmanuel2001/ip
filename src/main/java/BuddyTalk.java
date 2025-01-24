@@ -73,10 +73,17 @@ public class BuddyTalk {
                 toPrint(text);
             } else {
                 if (input.startsWith("todo")) {
-                    ToDo task = new ToDo(input.substring(5));
-                    list.add(task);
-                    String text = String.format("Got it. I've added this task: \n  %s \n Now you have %d tasks in the list.", task.toString(), list.size());
-                    toPrint(text);
+                    try {
+                        if (input.length() < 5) {
+                            throw new Exception();
+                        }
+                        ToDo task = new ToDo(input.substring(5));
+                        list.add(task);
+                        String text = String.format("Got it. I've added this task: \n  %s \n Now you have %d tasks in the list.", task.toString(), list.size());
+                        toPrint(text);
+                    } catch (Exception e) {
+                        toPrint("An error occurred while adding the 'todo' task. Please check your input format and try again.");
+                    }
                 } else if (input.startsWith("deadline")) {
                     String[] parts = input.split(" /by ");
 
@@ -87,11 +94,11 @@ public class BuddyTalk {
                         String d_Date = parts[1].trim();
                         Deadline task = new Deadline(desc, d_Date);
                         list.add(task);
-                        String confirmation = String.format(
+                        String text = String.format(
                                 "Got it. I've added this task: \n  %s \n Now you have %d tasks in the list.",
                                 task.toString(), list.size()
                         );
-                        toPrint(confirmation);
+                        toPrint(text);
                     }
                 } else if (input.startsWith("event")) {
                     try {
@@ -100,22 +107,25 @@ public class BuddyTalk {
                         if (parts.length != 2 || !parts[1].contains(" /to ")) {
                             toPrint("Invalid format for 'event'. Please use: event <description> /from <start time> /to <end time>");
                         } else {
-                            String description = parts[0].substring(6).trim();
+                            String desc = parts[0].substring(6).trim();
                             String[] time = parts[1].split(" /to ");
                             String startTime = time[0].trim();
                             String endTime = time[1].trim();
 
-                            Event task = new Event(description, startTime, endTime);
+                            Event task = new Event(desc, startTime, endTime);
                             list.add(task);
-                            String confirmation = String.format(
+                            String text = String.format(
                                     "Got it. I've added this task: \n  %s \n Now you have %d tasks in the list.",
                                     task.toString(), list.size()
                             );
-                            toPrint(confirmation);
+                            toPrint(text);
                         }
                     } catch (Exception e) {
                         toPrint("An error occurred while processing the 'event' task. Please try again.");
                     }
+                } else {
+                    String text = "OOPS!!! I'm sorry, but I don't know what that means :-(";
+                    toPrint(text);
                 }
             }
         }
