@@ -123,6 +123,20 @@ public class BuddyTalk {
                     } catch (Exception e) {
                         toPrint("An error occurred while processing the 'event' task. Please try again.");
                     }
+                } else if (input.startsWith("delete")) {
+                    String[] parts = input.split(" ");
+                    if (parts.length != 2) {
+                        toPrint("Invalid format for 'delete'. Please use: delete <task number>");
+                    } else {
+                        int num = Integer.parseInt(parts[1]);
+                        if (num > list.size()) {
+                            toPrint("Invalid task number. Please try again.");
+                        }
+                        String temp = list.get(num - 1).toString();
+                        list.remove(num - 1);
+                        String text = String.format("Noted. I've removed this task: \n  %s \n Now you have %d tasks in the list.", temp, list.size());
+                        toPrint(text);
+                    }
                 } else {
                     String text = "OOPS!!! I'm sorry, but I don't know what that means :-(";
                     toPrint(text);
