@@ -1,6 +1,6 @@
 public class ToDo extends Task {
     public ToDo(String taskDescription) {
-        super(taskDescription); // Inherit task description from Task
+        super(taskDescription, TaskType.TODO); // Inherit task description from Task
     }
 
     @Override

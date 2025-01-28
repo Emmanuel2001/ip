@@ -1,11 +1,21 @@
 public class Task {
-    private boolean isDone;
-    private String task;
+    protected boolean isDone;
+    protected String task;
+    protected TaskType taskType;
 
-    public Task(String task) {
+    public Task(String task, TaskType taskType) {
         this.task = task;
         this.isDone = false;
+        this.taskType = taskType;
     }
+
+    public TaskType getTaskType() {
+        return taskType;
+    }
+
+    public String getStatusIcon() {
+        return (isDone ? "[X]" : "[ ]");
+    };
 
     public boolean isDone() {
         return isDone;
@@ -25,6 +35,6 @@ public class Task {
 
     @Override
     public String toString() {
-        return (isDone ? "[X]" : "[ ]") + " " + task;
+        return String.format("%s %s", getStatusIcon(), task);
     }
 }
