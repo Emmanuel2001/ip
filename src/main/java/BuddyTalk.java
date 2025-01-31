@@ -22,10 +22,7 @@ public class BuddyTalk {
             this.list = new ArrayList<>(); // Start fresh on data corruption
         }
     }
-
-
-
-
+    
     public void run() {
         Scanner scanner = new Scanner(System.in);
         Display.start();
