@@ -1,12 +1,16 @@
-public class Task {
+public abstract class Task {
     protected boolean isDone;
     protected String task;
     protected TaskType taskType;
 
-    public Task(String task, TaskType taskType) {
+    public Task(String task, TaskType taskType, boolean isDone) {
         this.task = task;
         this.isDone = false;
         this.taskType = taskType;
+    }
+
+    public String toFileFormatPrefix() {
+        return isDone ? " | 1 | " : " | 0 | ";
     }
 
     public TaskType getTaskType() {
@@ -37,4 +41,6 @@ public class Task {
     public String toString() {
         return String.format("%s %s", getStatusIcon(), task);
     }
+
+    public abstract String toFileFormat();
 }
