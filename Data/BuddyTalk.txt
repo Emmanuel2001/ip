@@ -1,0 +1,4 @@
+T | 0 | jksdn
+T | 1 | kwsjdfn
+T | 0 | i by sun
+E | 0 | 1 | 1 | 2

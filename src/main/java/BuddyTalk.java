@@ -1,10 +1,32 @@
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class BuddyTalk {
-    private static ArrayList<Task> list = new ArrayList<>();
+    private static final String FILE_PATH = "data/BuddyTalk.txt";
+    private List<Task> list;
+    private Storage storage;
 
-    public static void main(String[] args) {
+
+    public BuddyTalk(String filePath) {
+        this.storage = new Storage(FILE_PATH); // Initialize with the file path
+        try {
+            this.list = storage.loadTasks(); // Load tasks from the file on startup
+            System.out.println("Tasks loaded successfully.");
+        } catch (IOException e) {
+            System.out.println("Failed to load tasks. A new file will be created.");
+            this.list = new ArrayList<>(); // Start with an empty list if file doesn't load
+        } catch (BuddyException e) {
+            System.out.println("The data file is corrupted. Starting with an empty task list.");
+            this.list = new ArrayList<>(); // Start fresh on data corruption
+        }
+    }
+
+
+
+
+    public void run() {
         Scanner scanner = new Scanner(System.in);
         Display.start();
 
@@ -15,7 +37,7 @@ public class BuddyTalk {
                 exit = true;
                 Display.end();
             } else if (input.equals("list")) {
-                Display.displayList(list);
+                Display.displayList((ArrayList<Task>) list);
             } else if (input.startsWith("mark")) {
                 String[] parts = input.split(" ");
                 int num = Integer.parseInt(parts[1]);
@@ -34,8 +56,8 @@ public class BuddyTalk {
                         if (input.length() < 5) {
                             throw new Exception();
                         }
-                        ToDo task = new ToDo(input.substring(5));
-                        list.add(task);
+                        ToDo task = new ToDo(input.substring(5), false);
+                        saveTask(task);
                         String text = String.format("Got it. I've added this task: \n  %s \n Now you have %d tasks in the list.", task.toString(), list.size());
                         Display.toPrint(text);
                     } catch (Exception e) {
@@ -49,8 +71,8 @@ public class BuddyTalk {
                     } else {
                         String desc = parts[0].substring(9).trim();
                         String d_Date = parts[1].trim();
-                        Deadline task = new Deadline(desc, d_Date);
-                        list.add(task);
+                        Deadline task = new Deadline(desc, d_Date, false);
+                        saveTask(task);
                         String text = String.format(
                                 "Got it. I've added this task: \n  %s \n Now you have %d tasks in the list.",
                                 task.toString(), list.size()
@@ -69,8 +91,8 @@ public class BuddyTalk {
                             String startTime = time[0].trim();
                             String endTime = time[1].trim();
 
-                            Event task = new Event(desc, startTime, endTime);
-                            list.add(task);
+                            Event task = new Event(desc, startTime, endTime, false);
+                            saveTask(task);
                             String text = String.format(
                                     "Got it. I've added this task: \n  %s \n Now you have %d tasks in the list.",
                                     task.toString(), list.size()
@@ -100,5 +122,20 @@ public class BuddyTalk {
                 }
             }
         }
+    }
+
+    public void saveTask(Task task) {
+        this.list.add(task);
+
+        try {
+            storage.saveTasks(list);
+            System.out.println("Task saved successfully.");
+        } catch (IOException e) {
+            System.out.println("Failed to save tasks: " + e.getMessage());
+        }
+    }
+
+    public static void main(String[] args) {
+        new BuddyTalk("data/BuddyTalk.txt").run();
     }
 }
