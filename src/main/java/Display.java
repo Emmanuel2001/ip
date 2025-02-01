@@ -55,7 +55,7 @@ public class Display {
     /**
      * Displays error message when an error is encountered.
      */
-    public void displayError(String error) {
+    public static void displayError(String error) {
         String str = String.format("""
                 ____________________________________________________________
                  Error: %s

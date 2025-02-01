@@ -51,7 +51,6 @@ public class Storage {
                 try {
                     Task task = parseTask(line);
                     tasks.add(task);
-                    System.out.println(task);
                 } catch (IllegalArgumentException e) {
                     throw new BuddyException("Data file corrupted: " + e.getMessage());
                 }

@@ -1,4 +1,5 @@
 import java.io.IOException;
+import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -22,7 +23,7 @@ public class BuddyTalk {
             this.list = new ArrayList<>(); // Start fresh on data corruption
         }
     }
-    
+
     public void run() {
         Scanner scanner = new Scanner(System.in);
         Display.start();
@@ -64,24 +65,29 @@ public class BuddyTalk {
                     String[] parts = input.split(" /by ");
 
                     if (parts.length != 2) {
-                        Display.toPrint("Invalid format for 'deadline'. Please use: deadline <task> /by <date>");
+                        Display.toPrint("Invalid format for 'deadline'. Please use: deadline <task> /by <yyyy-mm-dd>");
                     } else {
-                        String desc = parts[0].substring(9).trim();
-                        String d_Date = parts[1].trim();
-                        Deadline task = new Deadline(desc, d_Date, false);
-                        saveTask(task);
-                        String text = String.format(
-                                "Got it. I've added this task: \n  %s \n Now you have %d tasks in the list.",
-                                task.toString(), list.size()
-                        );
-                        Display.toPrint(text);
+                        try {
+                            String desc = parts[0].substring(9).trim();
+                            String d_Date = parts[1].trim();
+                            Deadline task = new Deadline(desc, d_Date, false);
+                            saveTask(task);
+                            String text = String.format(
+                                    "Got it. I've added this task: \n  %s \n Now you have %d tasks in the list.",
+                                    task.toString(), list.size()
+                            );
+                            Display.toPrint(text);
+                        } catch (Exception e) {
+                            Display.displayError("An error occurred while processing the 'deadline' task. Please ensure it is in the format: yyyy-MM-dd HHmm.");
+                        }
+
                     }
                 } else if (input.startsWith("event")) {
                     try {
                         String[] parts = input.split(" /from ");
 
                         if (parts.length != 2 || !parts[1].contains(" /to ")) {
-                            Display.toPrint("Invalid format for 'event'. Please use: event <description> /from <start time> /to <end time>");
+                            Display.toPrint("Invalid format for 'event'. Please use: event <description> /from <yyyy-MM-dd HHmm> /to <yyyy-MM-dd HHmm>");
                         } else {
                             String desc = parts[0].substring(6).trim();
                             String[] time = parts[1].split(" /to ");
@@ -96,8 +102,11 @@ public class BuddyTalk {
                             );
                             Display.toPrint(text);
                         }
+                    } catch (DateTimeParseException e) {
+                        Display.displayError("Invalid date or time format. Please use: yyyy-MM-dd HHmm");
+
                     } catch (Exception e) {
-                        Display.toPrint("An error occurred while processing the 'event' task. Please try again.");
+                        Display.displayError("An error occurred while processing the 'event' task. Please try again.");
                     }
                 } else if (input.startsWith("delete")) {
                     String[] parts = input.split(" ");
