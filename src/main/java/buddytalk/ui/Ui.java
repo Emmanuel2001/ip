@@ -2,15 +2,24 @@ package buddytalk.ui;
 
 import java.util.ArrayList;
 
+/**
+ * Handles all user interface interactions for the BuddyTalk application.
+ * <p>
+ * The {@code Ui} class provides static methods for displaying messages, task lists,
+ * and error messages to the user through the console.
+ * </p>
+ */
 public class Ui {
 
     /**
-     * Constructs a new {@code Display} object.
+     * Constructs a new {@code Ui} object.
+     * <p>This constructor is optional since all methods in this class are static,
+     * meaning the object does not need to be instantiated.</p>
      */
     public Ui() {}
 
     /**
-     * Displays message when the program starts.
+     * Displays the welcome message when the BuddyTalk program starts.
      */
     public static void start() {
         String start = """
@@ -24,7 +33,7 @@ public class Ui {
     }
 
     /**
-     * Displays message when the program exits.
+     * Displays the farewell message when the BuddyTalk program exits.
      */
     public static void end() {
         String bye = """
@@ -37,7 +46,11 @@ public class Ui {
     }
 
     /**
-     * Displays list of tasks.
+     * Displays the list of tasks to the user.
+     * <p>If the task list is empty, a message indicating that no tasks are present is displayed.
+     * Otherwise, all tasks in the list are printed along with their index.</p>
+     *
+     * @param list The {@code ArrayList<Task>} containing tasks to display.
      */
     public static void displayList(ArrayList<Task> list) {
         String bar = "____________________________________________________________";
@@ -55,7 +68,9 @@ public class Ui {
     }
 
     /**
-     * Displays error message when an error is encountered.
+     * Displays an error message when an error is encountered.
+     *
+     * @param error A string containing the error message to display.
      */
     public static void displayError(String error) {
         String str = String.format("""
@@ -68,7 +83,9 @@ public class Ui {
     }
 
     /**
-     * Displays message when an action has been successfully executed.
+     * Displays a custom message indicating the result of an action.
+     *
+     * @param message The message to display, typically describing a successfully performed action.
      */
     public static void toPrint(String message) {
         String str = String.format("""
