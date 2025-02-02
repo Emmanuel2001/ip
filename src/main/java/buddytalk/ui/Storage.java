@@ -5,18 +5,29 @@ import java.nio.file.*;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Handles the saving and loading of tasks to and from the disk.
+ * The {@code Storage} class is responsible for managing file operations for data persistence.
+ */
 public class Storage {
+    /** The file path to store or load task data. */
     private final String filePath;
 
+    /**
+     * Constructs a {@code Storage} object with the specified file path for storing data.
+     *
+     * @param filePath The absolute path of the file to be used for saving and loading tasks.
+     */
     public Storage(String filePath) {
         this.filePath = filePath;
     }
 
     /**
-     * Saves the task list to the disk.
+     * Saves the list of tasks to a file at the specified {@code filePath}. Creates parent directories
+     * if they do not exist. Each task is written in a format defined by the task's {@code toFileFormat()} method.
      *
-     * @param tasks the list of tasks to be saved
-     * @throws IOException if an I/O error occurs
+     * @param tasks The list of tasks to be saved to the file.
+     * @throws IOException If an I/O error occurs during the writing process.
      */
     public void saveTasks(List<Task> tasks) throws IOException {
         Path parentDir = Paths.get(filePath).getParent();
@@ -32,11 +43,13 @@ public class Storage {
     }
 
     /**
-     * Loads the task list from disk.
+     * Loads tasks from the file at the specified {@code filePath}. If the file does not exist,
+     * it creates a new file and returns an empty task list. Tasks are reconstructed based on
+     * the stored file format.
      *
-     * @return the list of loaded tasks
-     * @throws IOException          if an I/O error occurs
-     * @throws BuddyException if the data file is corrupted
+     * @return A list of tasks loaded from the file.
+     * @throws IOException If an I/O error occurs during the reading process.
+     * @throws BuddyException If the file data is corrupted or improperly formatted.
      */
     public ArrayList<Task> loadTasks() throws IOException, BuddyException {
         ArrayList<Task> tasks = new ArrayList<>();
@@ -63,11 +76,12 @@ public class Storage {
     }
 
     /**
-     * Parses a line from the file into a Task object.
+     * Parses a line from the file into a {@code Task} object. The line must be in a formatted structure
+     * that specifies the type of task (e.g., "T", "D", "E"), its completion status, description, and other data.
      *
-     * @param line the line to parse
-     * @return the parsed Task
-     * @throws BuddyException if the line format is invalid
+     * @param line The line to parse, formatted according to the application's data conventions.
+     * @return A {@code Task} object reconstructed from the raw data in the line.
+     * @throws BuddyException If the line's format is invalid or cannot be parsed into a valid {@code Task}.
      */
     private Task parseTask(String line) throws BuddyException {
         String[] parts = line.split(" \\| ");
