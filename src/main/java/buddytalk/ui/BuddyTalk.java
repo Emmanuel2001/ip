@@ -14,12 +14,12 @@ public class BuddyTalk {
         this.storage = new Storage(FILE_PATH); // Initialize with the file path
         try {
             this.list = new TaskList(storage.loadTasks()); // Load tasks from the file on startup
-            System.out.println("Tasks loaded successfully.");
+            Ui.toPrint("Tasks loaded successfully.");
         } catch (IOException e) {
-            System.out.println("Failed to load tasks. A new file will be created.");
+            Ui.displayError("Failed to load tasks. A new file will be created.");
             this.list = new TaskList(); // Start with an empty list if file doesn't load
         } catch (BuddyException e) {
-            System.out.println("The data file is corrupted. Starting with an empty task list.");
+            Ui.displayError("The data file is corrupted. Starting with an empty task list.");
             this.list = new TaskList(); // Start fresh on data corruption
         }
     }
@@ -144,7 +144,7 @@ public class BuddyTalk {
                     }
                 }
             } catch (IOException e) {
-                System.out.println("Failed to save tasks: " + e.getMessage());
+                Ui.displayError("Failed to save tasks: " + e.getMessage());
             } catch (BuddyException e) {
                 Ui.displayError(e.getMessage());
             }
@@ -156,9 +156,9 @@ public class BuddyTalk {
 
         try {
             storage.saveTasks(list.getAllTasks());
-            System.out.println("Task saved successfully.");
+            Ui.toPrint("Task saved successfully.");
         } catch (IOException e) {
-            System.out.println("Failed to save tasks: " + e.getMessage());
+            Ui.displayError("Failed to save tasks: " + e.getMessage());
         }
     }
 
