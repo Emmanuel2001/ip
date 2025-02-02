@@ -7,7 +7,7 @@ public abstract class Task {
 
     public Task(String task, TaskType taskType, boolean isDone) {
         this.task = task;
-        this.isDone = false;
+        this.isDone = isDone;
         this.taskType = taskType;
     }
 
