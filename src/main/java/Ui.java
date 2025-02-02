@@ -1,11 +1,11 @@
 import java.util.ArrayList;
 
-public class Display {
+public class Ui {
 
     /**
      * Constructs a new {@code Display} object.
      */
-    public Display() {}
+    public Ui() {}
 
     /**
      * Displays message when the program starts.

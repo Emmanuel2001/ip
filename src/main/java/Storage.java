@@ -36,8 +36,8 @@ public class Storage {
      * @throws IOException          if an I/O error occurs
      * @throws BuddyException if the data file is corrupted
      */
-    public List<Task> loadTasks() throws IOException, BuddyException {
-        List<Task> tasks = new ArrayList<>();
+    public ArrayList<Task> loadTasks() throws IOException, BuddyException {
+        ArrayList<Task> tasks = new ArrayList<>();
         File file = new File(filePath);
 
         if (!file.exists()) {
