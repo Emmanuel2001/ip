@@ -1,3 +1,5 @@
+package buddytalk.ui;
+
 public class ToDo extends Task {
     public ToDo(String taskDescription, boolean isDone) {
         super(taskDescription, TaskType.TODO, isDone);

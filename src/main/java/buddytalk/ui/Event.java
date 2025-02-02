@@ -1,6 +1,7 @@
+package buddytalk.ui;
+
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.time.format.DateTimeParseException;
 
 public class Event extends Task {
     protected LocalDateTime from;

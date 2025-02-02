@@ -1,14 +1,14 @@
+package buddytalk.ui;
+
 import java.io.IOException;
 import java.time.format.DateTimeParseException;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
 
 public class BuddyTalk {
     private static final String FILE_PATH = "data/BuddyTalk.txt";
     private TaskList list;
     private Storage storage;
-    private Ui ui;
+    //private Ui ui;
 
     public BuddyTalk() {
         this.storage = new Storage(FILE_PATH); // Initialize with the file path

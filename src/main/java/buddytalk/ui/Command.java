@@ -1,3 +1,4 @@
+package buddytalk.ui;
 
 public class Command {
     protected String command;

@@ -1,3 +1,5 @@
+package buddytalk.ui;
+
 public class BuddyException extends Exception {
 
     /**

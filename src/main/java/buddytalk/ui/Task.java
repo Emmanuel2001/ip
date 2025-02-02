@@ -1,3 +1,5 @@
+package buddytalk.ui;
+
 public abstract class Task {
     protected boolean isDone;
     protected String task;

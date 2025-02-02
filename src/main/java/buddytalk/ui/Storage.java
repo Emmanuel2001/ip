@@ -1,3 +1,5 @@
+package buddytalk.ui;
+
 import java.io.*;
 import java.nio.file.*;
 import java.util.ArrayList;
