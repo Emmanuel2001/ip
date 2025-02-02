@@ -2,6 +2,7 @@ package buddytalk.ui;
 
 import java.io.IOException;
 import java.time.format.DateTimeParseException;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class BuddyTalk {
@@ -56,6 +57,10 @@ public class BuddyTalk {
                         storage.saveTasks(list.getAllTasks());
                         String text = String.format("OK, I've marked this task as not done yet: \n  %s", list.getTask(num - 1).toString());
                         Ui.toPrint(text);
+                    }
+                    case "find" -> {
+                        ArrayList<Task> items = list.findTasks(command.getArguments());
+                        Ui.showList(items);
                     }
                     default -> {
                         switch (c) {

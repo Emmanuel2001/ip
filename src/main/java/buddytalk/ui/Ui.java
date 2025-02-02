@@ -54,6 +54,21 @@ public class Ui {
         System.out.println(bar);
     }
 
+    public static void showList(ArrayList<Task> list) {
+        String bar = "____________________________________________________________";
+        bar = bar.indent(4);
+        System.out.print(bar);
+        if (list.isEmpty()) {
+            System.out.println("     " + "You have no matching tasks!");
+        } else {
+            System.out.println("     " + "Here are the matching tasks in your list:");
+            for (int i = 0; i < list.size(); i++) {
+                System.out.println("     " + (i + 1) + "." + list.get(i).toString());
+            }
+        }
+        System.out.println(bar);
+    }
+
     /**
      * Displays error message when an error is encountered.
      */
