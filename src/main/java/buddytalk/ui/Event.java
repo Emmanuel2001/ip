@@ -10,19 +10,17 @@ import java.util.Locale;
  * and provides functionality to display and save the event.
  */
 public class Event extends Task {
+    /** Formatter for input date and time, using the pattern "yyyy-MM-dd HHmm". */
+    private static final DateTimeFormatter INPUT_FORMAT = DateTimeFormatter.ofPattern("yyyy-MM-dd HHmm");
+
+    /** Formatter for displaying date and time, using "MMM dd yyyy, h:mm a" in US locale. */
+    private static final DateTimeFormatter SHOW_FORMAT = DateTimeFormatter.ofPattern("MMM dd yyyy, h:mm a", Locale.US);
 
     /** The start time of the event as a {@code LocalDateTime}. */
     protected LocalDateTime from;
 
     /** The end time of the event as a {@code LocalDateTime}. */
     protected LocalDateTime to;
-
-    /** Formatter for input date and time, using the pattern "yyyy-MM-dd HHmm". */
-    private static final DateTimeFormatter INPUT_FORMAT = DateTimeFormatter.ofPattern("yyyy-MM-dd HHmm");
-
-    /** Formatter for displaying date and time, using "MMM dd yyyy, h:mm a" in US locale. */
-    private static final DateTimeFormatter DISPLAY_FORMAT = DateTimeFormatter.ofPattern("MMM dd yyyy, h:mm a", Locale.US);
-
     /**
      * Constructs an Event task with the specified task description, start time, end time,
      * and completion status.
@@ -46,7 +44,8 @@ public class Event extends Task {
      */
     @Override
     public String toString() {
-        return "[E]" + super.toString() + " (from: " + from.format(DISPLAY_FORMAT) + " to: " + to.format(DISPLAY_FORMAT) + ")";
+        return "[E]" + super.toString()
+                + " (from: " + from.format(SHOW_FORMAT) + " to: " + to.format(SHOW_FORMAT) + ")";
     }
 
     /**
@@ -57,7 +56,8 @@ public class Event extends Task {
      */
     @Override
     public String toFileFormat() {
-        return "E" + super.toFileFormatPrefix() + super.task + " | " + this.from.format(INPUT_FORMAT) + " | " + this.to.format(INPUT_FORMAT);
+        return "E" + super.toFileFormatPrefix()
+                + super.task + " | " + this.from.format(INPUT_FORMAT) + " | " + this.to.format(INPUT_FORMAT);
     }
 
     /**

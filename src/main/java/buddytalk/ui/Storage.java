@@ -1,7 +1,14 @@
 package buddytalk.ui;
 
-import java.io.*;
-import java.nio.file.*;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -90,10 +97,10 @@ public class Storage {
         boolean isDone = Integer.parseInt(parts[1]) == 1;
 
         return switch (taskType) {
-            case "T" -> new ToDo(parts[2], isDone);
-            case "D" -> new Deadline(parts[2], parts[3], isDone);
-            case "E" -> new Event(parts[2], parts[3], parts[4], isDone);
-            default -> throw new BuddyException("Corrupted data file! Unable to parse task.");
+        case "T" -> new ToDo(parts[2], isDone);
+        case "D" -> new Deadline(parts[2], parts[3], isDone);
+        case "E" -> new Event(parts[2], parts[3], parts[4], isDone);
+        default -> throw new BuddyException("Corrupted data file! Unable to parse task.");
         };
     }
 }
