@@ -10,10 +10,9 @@ import java.util.Locale;
  * with its deadline details.
  */
 public class Deadline extends Task {
-    protected LocalDateTime by;
     private static final DateTimeFormatter INPUT_FORMAT = DateTimeFormatter.ofPattern("yyyy-MM-dd HHmm");
-    private static final DateTimeFormatter DISPLAY_FORMAT = DateTimeFormatter.ofPattern("MMM dd yyyy, h:mm a", Locale.US);
-
+    private static final DateTimeFormatter SHOW_FORMAT = DateTimeFormatter.ofPattern("MMM dd yyyy, h:mm a", Locale.US);
+    protected LocalDateTime by;
     /**
      * Constructs a Deadline task with the specified task description, deadline,
      * and completion status.
@@ -35,7 +34,7 @@ public class Deadline extends Task {
      */
     @Override
     public String toString() {
-        return "[D]" + super.toString() + " (by: " + by.format(DISPLAY_FORMAT) + ")";
+        return "[D]" + super.toString() + " (by: " + by.format(SHOW_FORMAT) + ")";
     }
 
     /**

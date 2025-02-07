@@ -58,14 +58,16 @@ public class BuddyTalk {
                     int num = Integer.parseInt(command.getArguments());
                     list.getTask(num - 1).mark();
                     storage.saveTasks(list.getAllTasks());
-                    String text = String.format("Nice! I've marked this task as done: \n  %s ", list.getTask(num - 1).toString());
+                    String text = String.format("Nice! I've marked this task as done: \n  %s ",
+                            list.getTask(num - 1).toString());
                     Ui.toPrint(text);
                 }
                 case "unmark" -> {
                     int num = Integer.parseInt(command.getArguments());
                     list.getTask(num - 1).unmark();
                     storage.saveTasks(list.getAllTasks());
-                    String text = String.format("OK, I've marked this task as not done yet: \n  %s", list.getTask(num - 1).toString());
+                    String text = String.format("OK, I've marked this task as not done yet: \n  %s",
+                            list.getTask(num - 1).toString());
                     Ui.toPrint(text);
                 }
                 case "find" -> {
@@ -79,7 +81,8 @@ public class BuddyTalk {
                         }
                         ToDo task = new ToDo(command.getArguments(), false);
                         saveTask(task);
-                        String text = String.format("Got it. I've added this task: \n  %s \n Now you have %d tasks in the list.", task.toString(), list.size());
+                        String text = String.format("Got it. I've added this task: \n  %s \n "
+                                + "Now you have %d tasks in the list.", task.toString(), list.size());
                         Ui.toPrint(text);
                     } catch (IllegalAccessException e) {
                         Ui.displayError("Description for ToDo cannot be empty.");
@@ -93,8 +96,8 @@ public class BuddyTalk {
                     } else {
                         try {
                             String desc = parts[0].trim();
-                            String d_Date = parts[1].trim();
-                            Deadline task = new Deadline(desc, d_Date, false);
+                            String date = parts[1].trim();
+                            Deadline task = new Deadline(desc, date, false);
                             saveTask(task);
                             String text = String.format(
                                     "Got it. I've added this task: \n  %s \n Now you have %d tasks in the list.",
@@ -102,7 +105,8 @@ public class BuddyTalk {
                             );
                             Ui.toPrint(text);
                         } catch (Exception e) {
-                            Ui.displayError("An error occurred while processing the 'deadline' task. Please ensure it is in the format: yyyy-MM-dd HHmm.");
+                            Ui.displayError("An error occurred while processing the 'deadline' task. "
+                                    + "Please ensure it is in the format: yyyy-MM-dd HHmm.");
                         }
 
                     }
@@ -112,7 +116,8 @@ public class BuddyTalk {
                         String[] parts = command.getArguments().split(" /from ");
 
                         if (parts.length != 2 || !parts[1].contains(" /to ")) {
-                            Ui.toPrint("Invalid format for 'event'. Please use: event <description> /from <yyyy-MM-dd HHmm> /to <yyyy-MM-dd HHmm>");
+                            Ui.toPrint("Invalid format for 'event'. "
+                                    + "Please use: event <description> /from <yyyy-MM-dd HHmm> /to <yyyy-MM-dd HHmm>");
                         } else {
                             String desc = parts[0].trim();
                             String[] time = parts[1].split(" /to ");
@@ -141,13 +146,14 @@ public class BuddyTalk {
                     }
                     String temp = list.getTask(num - 1).toString();
                     list.deleteTask(num - 1);
-                    String text = String.format("Noted. I've removed this task: \n  %s \n Now you have %d tasks in the list.", temp, list.size());
+                    String text = String.format("Noted. I've removed this task: \n  %s \n "
+                            + "Now you have %d tasks in the list.", temp, list.size());
                     Ui.toPrint(text);
                 }
                 default -> {
-                        String text = "OOPS!!! I'm sorry, but I don't know what that means :-(";
-                        Ui.toPrint(text);
-                    }
+                    String text = "OOPS!!! I'm sorry, but I don't know what that means :-(";
+                    Ui.toPrint(text);
+                }
                 }
             } catch (IOException e) {
                 Ui.displayError("Failed to save tasks: " + e.getMessage());

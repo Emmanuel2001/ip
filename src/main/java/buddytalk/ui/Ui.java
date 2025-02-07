@@ -67,6 +67,15 @@ public class Ui {
         System.out.println(bar);
     }
 
+    /**
+     * Displays the list of tasks with proper formatting.
+     *
+     * If the list is empty, the method prints a message stating that there are no matching tasks.
+     * Otherwise, it prints a formatted list of tasks with their index numbers.
+     *
+     * @param list The {@code ArrayList} of {@link Task} objects to be displayed.
+     *             Each task is shown with its index number in the list.
+     */
     public static void showList(ArrayList<Task> list) {
         String bar = "____________________________________________________________";
         bar = bar.indent(4);

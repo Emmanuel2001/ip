@@ -40,7 +40,8 @@ public class TaskList {
      * Deletes a task from the task list at the specified index.
      *
      * @param index The index of the task to delete (0-based indexing).
-     * @throws IndexOutOfBoundsException If the index is out of range (less than 0 or greater than or equal to the list size).
+     * @throws IndexOutOfBoundsException If the index is out of range
+     *      (less than 0 or greater than or equal to the list size).
      */
     public void deleteTask(int index) throws IndexOutOfBoundsException {
         tasks.remove(index);
@@ -51,7 +52,8 @@ public class TaskList {
      *
      * @param index The index of the task to retrieve (0-based indexing).
      * @return The {@link Task} at the specified index.
-     * @throws IndexOutOfBoundsException If the index is out of range (less than 0 or greater than or equal to the list size).
+     * @throws IndexOutOfBoundsException If the index is out of range
+     *      (less than 0 or greater than or equal to the list size).
      */
     public Task getTask(int index) throws IndexOutOfBoundsException {
         return tasks.get(index);
@@ -75,6 +77,15 @@ public class TaskList {
         return tasks.size();
     }
 
+    /**
+     * Finds and retrieves a list of tasks that contain the specified keyword in their description.
+     * The search is case-insensitive and matches tasks whose descriptions contain
+     * the given keyword as a substring.
+     *
+     * @param keyword The keyword to search for in the task descriptions.
+     * @return An {@code ArrayList} of {@link Task} objects whose descriptions
+     *         contain the specified keyword.
+     */
     public ArrayList<Task> findTasks(String keyword) {
         ArrayList<Task> foundTasks = new ArrayList<>();
         for (Task task : tasks) {
