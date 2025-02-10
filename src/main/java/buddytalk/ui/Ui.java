@@ -21,28 +21,26 @@ public class Ui {
     /**
      * Displays the welcome message when the BuddyTalk program starts.
      */
-    public static void start() {
+    public static String start() {
         String start = """
-                ____________________________________________________________
                  Hello! I'm BuddyTalk
                  What can I do for you?
-                ____________________________________________________________
                 """;
-        start = start.indent(4);
-        System.out.println(start);
+        //start = start.indent(4);
+        //System.out.println(start);
+        return start;
     }
 
     /**
      * Displays the farewell message when the BuddyTalk program exits.
      */
-    public static void end() {
+    public static String end() {
         String bye = """
-                ____________________________________________________________
                  Bye. Hope to see you again soon!
-                ____________________________________________________________
                 """;
-        bye = bye.indent(4);
-        System.out.println(bye);
+        //bye = bye.indent(4);
+        //System.out.println(bye);
+        return bye;
     }
 
     /**
@@ -52,19 +50,25 @@ public class Ui {
      *
      * @param list The {@code ArrayList<Task>} containing tasks to display.
      */
-    public static void displayList(ArrayList<Task> list) {
-        String bar = "____________________________________________________________";
-        bar = bar.indent(4);
-        System.out.print(bar);
+    public static String displayList(ArrayList<Task> list) {
+        //String bar = "____________________________________________________________";
+        //bar = bar.indent(4);
+        //System.out.print(bar);
+        StringBuilder sb = new StringBuilder();
         if (list.isEmpty()) {
-            System.out.println("     " + "You have no tasks!");
+            //System.out.println("     " + "You have no tasks!");
+            sb.append("You have no tasks!\n");
         } else {
-            System.out.println("     " + "Here are the tasks in your list:");
+            //System.out.println("     " + "Here are the tasks in your list:");
+            sb.append("Here are the tasks in your list:\n");
             for (int i = 0; i < list.size(); i++) {
-                System.out.println("     " + (i + 1) + "." + list.get(i).toString());
+                //System.out.println("     " + (i + 1) + "." + list.get(i).toString());
+                sb.append((i + 1)).append(".").append(list.get(i).toString()).append("\n");
             }
         }
-        System.out.println(bar);
+        //System.out.println(bar);
+        //sb.append(bar);
+        return sb.toString();
     }
 
     /**
@@ -76,19 +80,26 @@ public class Ui {
      * @param list The {@code ArrayList} of {@link Task} objects to be displayed.
      *             Each task is shown with its index number in the list.
      */
-    public static void showList(ArrayList<Task> list) {
-        String bar = "____________________________________________________________";
-        bar = bar.indent(4);
-        System.out.print(bar);
+    public static String showList(ArrayList<Task> list) {
+        //String bar = "____________________________________________________________";
+        //bar = bar.indent(4);
+        //System.out.print(bar);
+        StringBuilder sb = new StringBuilder();
+        //sb.append(bar).append("\n");
         if (list.isEmpty()) {
-            System.out.println("     " + "You have no matching tasks!");
+            //System.out.println("     " + "You have no matching tasks!");
+            sb.append("You have no matching tasks!\n");
         } else {
-            System.out.println("     " + "Here are the matching tasks in your list:");
+            //System.out.println("     " + "Here are the matching tasks in your list:");
+            sb.append("Here are the matching tasks in your list:\n");
             for (int i = 0; i < list.size(); i++) {
-                System.out.println("     " + (i + 1) + "." + list.get(i).toString());
+                //System.out.println("     " + (i + 1) + "." + list.get(i).toString());
+                sb.append((i + 1)).append(".").append(list.get(i).toString()).append("\n");
             }
         }
-        System.out.println(bar);
+        //System.out.println(bar);
+        //sb.append(bar);
+        return sb.toString();
     }
 
     /**
@@ -96,14 +107,12 @@ public class Ui {
      *
      * @param error A string containing the error message to display.
      */
-    public static void displayError(String error) {
-        String str = String.format("""
-                ____________________________________________________________
+    public static String displayError(String error) {
+        //str = str.indent(4);
+        //System.out.println(str);
+        return String.format("""
                  Error: %s
-                ____________________________________________________________
                 """, error);
-        str = str.indent(4);
-        System.out.println(str);
     }
 
     /**
@@ -111,13 +120,11 @@ public class Ui {
      *
      * @param message The message to display, typically describing a successfully performed action.
      */
-    public static void toPrint(String message) {
-        String str = String.format("""
-                ____________________________________________________________
+    public static String toPrint(String message) {
+        //str = str.indent(4);
+        //System.out.println(str);
+        return String.format("""
                  %s
-                ____________________________________________________________
                 """, message);
-        str = str.indent(4);
-        System.out.println(str);
     }
 }
