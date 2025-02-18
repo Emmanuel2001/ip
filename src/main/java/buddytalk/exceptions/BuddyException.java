@@ -1,4 +1,4 @@
-package buddytalk.ui;
+package buddytalk.exceptions;
 
 /**
  * Represents a custom exception specific to the BuddyTalk application.

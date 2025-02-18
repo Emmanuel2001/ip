@@ -1,4 +1,4 @@
-package buddytalk.ui;
+package buddytalk.tasks;
 
 /**
  * Enumeration of task types supported by the application.

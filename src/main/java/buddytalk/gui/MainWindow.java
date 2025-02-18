@@ -1,5 +1,7 @@
-package buddytalk.ui;
+package buddytalk.gui;
 
+import buddytalk.BuddyTalk;
+import buddytalk.exceptions.BuddyException;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -41,17 +43,21 @@ public class MainWindow extends AnchorPane {
      * the dialog container. Clears the user input after processing.
      */
     @FXML
-    private void handleUserInput() {
-        String input = userInput.getText();
-        String response = buddyTalk.run(input);
-        dialogContainer.getChildren().addAll(
-                DialogBox.getUserDialog(input, userImage),
-                DialogBox.getBuddyTalkDialog(response, dukeImage)
-        );
-        userInput.clear();
-        if (input.equals("bye")) {
-            Platform.exit();
-            System.exit(0);
+    private void handleUserInput() throws BuddyException {
+        try {
+            String input = userInput.getText();
+            String response = buddyTalk.run(input);
+            dialogContainer.getChildren().addAll(
+                    DialogBox.getUserDialog(input, userImage),
+                    DialogBox.getBuddyTalkDialog(response, dukeImage)
+            );
+            userInput.clear();
+            if (input.equals("bye")) {
+                Platform.exit();
+                System.exit(0);
+            }
+        } catch (Exception e) {
+            throw new BuddyException(e.getMessage());
         }
     }
 }

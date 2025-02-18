@@ -1,4 +1,4 @@
-package buddytalk.ui;
+package buddytalk.tasks;
 
 /**
  * Represents a generic task. A {@code Task} object encapsulates the

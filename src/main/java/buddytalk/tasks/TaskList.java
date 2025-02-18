@@ -1,4 +1,4 @@
-package buddytalk.ui;
+package buddytalk.tasks;
 
 import java.util.ArrayList;
 

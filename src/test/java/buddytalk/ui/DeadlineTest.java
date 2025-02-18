@@ -7,6 +7,8 @@ import java.time.format.DateTimeFormatter;
 
 import org.junit.jupiter.api.Test;
 
+import buddytalk.tasks.Deadline;
+
 class DeadlineTest {
 
     @Test

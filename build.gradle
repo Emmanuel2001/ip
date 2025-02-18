@@ -48,8 +48,7 @@ test {
 }
 
 application {
-    //mainClass.set("buddytalk.ui.BuddyTalk")
-    mainClass.set("buddytalk.ui.Launcher")
+    mainClass.set("buddytalk.gui.Launcher")
 }
 
 shadowJar {

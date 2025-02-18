@@ -1,4 +1,4 @@
-package buddytalk.ui;
+package buddytalk.tasks;
 
 /**
  * Represents a "ToDo" task. A {@code ToDo} is a basic task with a description and completion status,

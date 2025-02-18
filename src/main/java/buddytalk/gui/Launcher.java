@@ -1,4 +1,4 @@
-package buddytalk.ui;
+package buddytalk.gui;
 
 import javafx.application.Application;
 

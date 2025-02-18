@@ -1,4 +1,4 @@
-package buddytalk.ui;
+package buddytalk.tasks;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;

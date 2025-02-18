@@ -5,6 +5,10 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import buddytalk.tasks.Task;
+import buddytalk.tasks.TaskList;
+import buddytalk.tasks.ToDo;
+
 class TaskListTest {
 
     private TaskList taskList;
