@@ -32,6 +32,7 @@ public class Storage {
      * @param filePath The absolute path of the file to be used for saving and loading tasks.
      */
     public Storage(String filePath) {
+        assert filePath != null: "File path cannot be null!";
         this.filePath = filePath;
     }
 
@@ -97,6 +98,7 @@ public class Storage {
      * @throws BuddyException If the line's format is invalid or cannot be parsed into a valid {@code Task}.
      */
     private Task parseTask(String line) throws BuddyException {
+        assert line != null: "Line cannot be null!";
         String[] parts = line.split(" \\| ");
 
         String taskType = parts[0];
