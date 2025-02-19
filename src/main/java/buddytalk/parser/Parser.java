@@ -24,6 +24,7 @@ public class Parser {
         commandParsers.put("delete", new DeleteParser());
         commandParsers.put("find", new FindParser());
         commandParsers.put("list", new ListParser());
+        commandParsers.put("help", new HelpParser());
     }
 
     /**

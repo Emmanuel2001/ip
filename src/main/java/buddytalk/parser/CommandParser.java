@@ -1,6 +1,7 @@
 package buddytalk.parser;
 
 import buddytalk.commands.Command;
+import buddytalk.commands.Help;
 import buddytalk.exceptions.BuddyException;
 
 /**
