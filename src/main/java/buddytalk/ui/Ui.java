@@ -68,6 +68,7 @@ public class Ui {
      * @param error A string containing the error message to display.
      */
     public String displayError(String error) {
+        assert error != null: "Error message cannot be null!";
         return String.format("""
                  Error: %s
                 """, error);
