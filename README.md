@@ -1,26 +1,61 @@
-# BuddyTalk project template
+# BuddyTalk - Your Personal Task Management Chatbot
 
-This is a project template for a greenfield Java project. It's named after the Java mascot _Duke_. Given below are instructions on how to use it.
+```
+ _______                 __       __          ________          __ __       
+|       \               |  \     |  \        |        \        |  \  \      
+| ▓▓▓▓▓▓▓\__    __  ____| ▓▓ ____| ▓▓__    __ \▓▓▓▓▓▓▓▓ ______ | ▓▓ ▓▓   __ 
+| ▓▓__/ ▓▓  \  |  \/      ▓▓/      ▓▓  \  |  \  | ▓▓   |      \| ▓▓ ▓▓  /  \
+| ▓▓    ▓▓ ▓▓  | ▓▓  ▓▓▓▓▓▓▓  ▓▓▓▓▓▓▓ ▓▓  | ▓▓  | ▓▓    \▓▓▓▓▓▓\ ▓▓ ▓▓_/  ▓▓
+| ▓▓▓▓▓▓▓\ ▓▓  | ▓▓ ▓▓  | ▓▓ ▓▓  | ▓▓ ▓▓  | ▓▓  | ▓▓   /      ▓▓ ▓▓ ▓▓   ▓▓ 
+| ▓▓__/ ▓▓ ▓▓__/ ▓▓ ▓▓__| ▓▓ ▓▓__| ▓▓ ▓▓__/ ▓▓  | ▓▓  |  ▓▓▓▓▓▓▓ ▓▓ ▓▓▓▓▓▓\ 
+| ▓▓    ▓▓\▓▓    ▓▓\▓▓    ▓▓\▓▓    ▓▓\▓▓    ▓▓  | ▓▓   \▓▓    ▓▓ ▓▓ ▓▓  \▓▓\
+ \▓▓▓▓▓▓▓  \▓▓▓▓▓▓  \▓▓▓▓▓▓▓ \▓▓▓▓▓▓▓_\▓▓▓▓▓▓▓   \▓▓    \▓▓▓▓▓▓▓\▓▓\▓▓   \▓▓
+                                    |  \__| ▓▓                              
+                                     \▓▓    ▓▓                              
+                                      \▓▓▓▓▓▓                               
+```
 
-## Setting up in Intellij
+---
 
-Prerequisites: JDK 17, update Intellij to the most recent version.
+## Features
+- Create todos
+- Track deadlines
+- Schedule Events
+- List all tasks
+- Find task with keyword
+- Mark or unmark tasks that's done
 
-1. Open Intellij (if you are not in the welcome screen, click `File` > `Close Project` to close the existing project first)
-1. Open the project into Intellij as follows:
-   1. Click `Open`.
-   1. Select the project directory, and click `OK`.
-   1. If there are any further prompts, accept the defaults.
-1. Configure the project to use **JDK 17** (not other versions) as explained in [here](https://www.jetbrains.com/help/idea/sdk.html#set-up-jdk).<br>
-   In the same dialog, set the **Project language level** field to the `SDK default` option.
-1. After that, locate the `src/main/java/BuddyTalk.java` file, right-click it, and choose `Run BuddyTalk.main()` (if the code editor is showing compile errors, try restarting the IDE). If the setup is correct, you should see something like the below as the output:
-   ```
-   Hello from
-    ____        _        
-   |  _ \ _   _| | _____ 
-   | | | | | | | |/ / _ \
-   | |_| | |_| |   <  __/
-   |____/ \__,_|_|\_\___|
-   ```
+## How to Use (Commands)
+- Create a new todo
+   - `todo <description>`
+- Create a new task with deadline
+   - `deadline <description> /by <date>`
+- Create a new task for events
+   - `event <description> /from <date> /to <date>`
+- Display list of tasks
+   - `list`
+- Searching for tasks
+   - `find <keyword>`
+- Mark a task as done
+   - `mark <index>`
+- Unmark a task
+   - `unmark <index>`
+- Delete a task
+   - `delete <index>`
+- List of help
+   - `help`
+- Help for each command (Eg. help todo)
+   - `help <command>`
+ 
+---
 
-**Warning:** Keep the `src\main\java` folder as the root folder for Java files (i.e., don't rename those folders or move Java files to another folder outside of this folder path), as this is the default location some tools (e.g., Gradle) expect to find Java files.
+## Getting Started
+### Prerequisites
+- Java 17 or Higher
+
+### Installation
+1. Download latest release from Releases Page ([Release]())
+2. Run the following command:
+``` java
+java -jar buddytalk.jar
+```
