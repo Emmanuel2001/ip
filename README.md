@@ -54,7 +54,7 @@
 - Java 17 or Higher
 
 ### Installation
-1. Download latest release from Releases Page ([Release]())
+1. Download latest release from Releases Page ([Release](https://github.com/Emmanuel2001/ip/releases/tag/A-Release))
 2. Run the following command:
 ``` java
 java -jar buddytalk.jar
