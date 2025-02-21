@@ -1,5 +1,6 @@
 package buddytalk.gui;
 
+import java.awt.*;
 import java.io.IOException;
 
 import buddytalk.BuddyTalk;
@@ -23,6 +24,9 @@ public class Main extends Application {
     @Override
     public void start(Stage stage) {
         try {
+            stage.setTitle("BuddyTalk");
+            stage.setMinHeight(417);
+            stage.setMinWidth(417);
             FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("/view/MainWindow.fxml"));
             AnchorPane ap = fxmlLoader.load();
             Scene scene = new Scene(ap);
