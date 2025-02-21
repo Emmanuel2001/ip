@@ -59,3 +59,6 @@
 ``` java
 java -jar buddytalk.jar
 ```
+
+### Screenshot
+![alt text](https://Emmanuel2001.github.io/ip/Ui.png)
