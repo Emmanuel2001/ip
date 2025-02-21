@@ -6,24 +6,22 @@ import buddytalk.tasks.Task;
 
 /**
  * Handles all user interface interactions for the BuddyTalk application.
- * <p>
  * The {@code Ui} class provides static methods for displaying messages, task lists,
  * and error messages to the user through the console.
- * </p>
  */
 public class Ui {
 
     /**
      * Constructs a new {@code Ui} object.
-     * <p>This constructor is optional since all methods in this class are static,
-     * meaning the object does not need to be instantiated.</p>
+     * This constructor is optional since all methods in this class are static,
+     * meaning the object does not need to be instantiated.
      */
     public Ui() {}
 
     /**
      * Displays the list of tasks to the user.
-     * <p>If the task list is empty, a message indicating that no tasks are present is displayed.
-     * Otherwise, all tasks in the list are printed along with their index.</p>
+     * If the task list is empty, a message indicating that no tasks are present is displayed.
+     * Otherwise, all tasks in the list are printed along with their index.
      *
      * @param tasks The {@code ArrayList<Task>} containing tasks to display.
      */
@@ -70,7 +68,7 @@ public class Ui {
     public String displayError(String error) {
         assert error != null: "Error message cannot be null!";
         return String.format("""
-                 Error: %s
+                 Note: %s
                 """, error);
     }
 }
