@@ -19,10 +19,10 @@ class DeadlineTest {
 
         Deadline deadline = new Deadline(task, by, isDone);
 
-        assertEquals(task, deadline.task);
-        assertFalse(deadline.isDone);
+        assertEquals(task, deadline.getTask());
+        assertFalse(deadline.isDone());
 
-        assertEquals("Aug 02 2099, 3:00 pm", deadline.by.format(DateTimeFormatter.ofPattern("MMM dd yyyy, h:mm a")));
+        assertEquals("Aug 02 2099, 3:00 pm", deadline.getDeadline().format(DateTimeFormatter.ofPattern("MMM dd yyyy, h:mm a")));
     }
 
     @Test
@@ -35,5 +35,21 @@ class DeadlineTest {
 
         String expected = "D | 1 | Do 2109 | 2099-08-02 1500";
         assertEquals(expected, deadline.toFileFormat());
+    }
+
+    @Test
+    void invalidDateFormat_test() {
+        String task = "Do something";
+        String by = "2099/08/02 1500"; // Invalid format
+        boolean isDone = false;
+
+        Exception exception = null;
+        try {
+            new Deadline(task, by, isDone);
+        } catch (Exception e) {
+            exception = e;
+        }
+
+        assertEquals("Text '2099/08/02 1500' could not be parsed at index 4", exception.getMessage());
     }
 }

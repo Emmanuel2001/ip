@@ -12,7 +12,7 @@ import java.util.Locale;
 public class Deadline extends Task {
     private static final DateTimeFormatter INPUT_FORMAT = DateTimeFormatter.ofPattern("yyyy-MM-dd HHmm");
     private static final DateTimeFormatter SHOW_FORMAT = DateTimeFormatter.ofPattern("MMM dd yyyy, h:mm a", Locale.US);
-    protected LocalDateTime by;
+    private LocalDateTime by;
     /**
      * Constructs a Deadline task with the specified task description, deadline,
      * and completion status.
