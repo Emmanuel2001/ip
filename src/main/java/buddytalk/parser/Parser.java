@@ -47,7 +47,7 @@ public class Parser {
 
         CommandParser parser = commandParsers.get(commandType);
         if (parser == null) {
-            throw new BuddyException("Unknown command: " + commandType);
+            throw new BuddyException("Unknown command: " + commandType + ". try help");
         }
 
         return parser.parse(tokens);
