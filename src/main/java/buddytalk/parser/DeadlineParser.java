@@ -1,5 +1,7 @@
 package buddytalk.parser;
 
+import java.time.format.DateTimeParseException;
+
 import buddytalk.commands.Add;
 import buddytalk.exceptions.BuddyException;
 import buddytalk.tasks.Deadline;
@@ -23,15 +25,19 @@ public class DeadlineParser implements CommandParser {
      */
     @Override
     public Add parse(String[] tokens) throws BuddyException {
-        if (tokens.length < 2) {
-            throw new BuddyException("The description of a deadline cannot be empty.");
-        }
+        try {
+            if (tokens.length < 2) {
+                throw new BuddyException("The description of a deadline cannot be empty.");
+            }
 
-        String[] details = tokens[1].strip().split("/by", 2);
-        if (details.length < 2 || details[1].isBlank()) {
-            throw new BuddyException("The deadline task must include a /by clause.");
-        }
+            String[] details = tokens[1].strip().split("/by", 2);
+            if (details.length < 2 || details[1].isBlank()) {
+                throw new BuddyException("The deadline task must include a /by clause.");
+            }
 
-        return new Add(new Deadline(details[0].strip(), details[1].strip(), false));
+            return new Add(new Deadline(details[0].strip(), details[1].strip(), false));
+        } catch (DateTimeParseException e) {
+            throw new BuddyException("The date format is invalid. Please use 'yyyy-MM-dd HH:mm'.");
+        }
     }
 }
