@@ -18,7 +18,7 @@ public class EventParser implements CommandParser {
      * @param tokens The array of strings containing the command and its arguments.
      *               The first token should be "event", while the second contains the description and required clauses.
      * @return An {@code Add} command containing the {@code Event} task
-     * with the parsed description, start time, and end time.
+     *              with the parsed description, start time, and end time.
      * @throws BuddyException If the description is missing or
      *                        if any of the required clauses (/from or /to) are missing or blank.
      */

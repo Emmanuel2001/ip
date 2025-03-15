@@ -29,9 +29,9 @@
 - Create a new todo
     - `todo <description>`
 - Create a new task with deadline
-    - `deadline <description> /by <date>`
+    - `deadline <description> /by <date yyyy-mm-dd HHmm>`
 - Create a new task for events
-    - `event <description> /from <date> /to <date>`
+    - `event <description> /from <date yyyy-mm-dd HHmm> /to <date yyyy-mm-dd HHmm>`
 - Display list of tasks
     - `list`
 - Searching for tasks

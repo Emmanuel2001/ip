@@ -15,8 +15,10 @@ public class DeadlineParser implements CommandParser {
      * The "deadline" command requires a description and a due date/time, specified using the "/by" clause.
      *
      * @param tokens The array of strings containing the command and its arguments.
-     *               The first token should be "deadline", while the second contains the description and date/time clause.
-     * @return An {@code Add} command containing the {@code Deadline} task with the parsed description and due date/time.
+     *               The first token should be "deadline",
+     *               while the second contains the description and date/time clause.
+     * @return An {@code Add} command containing the {@code Deadline}
+     *               task with the parsed description and due date/time.
      * @throws BuddyException If the description is missing or if the "/by" clause is missing or blank.
      */
     @Override

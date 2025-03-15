@@ -23,7 +23,8 @@ class EventTest {
         assertEquals(task, event.getTask());
         assertFalse(event.isDone());
 
-        assertEquals("Aug 02 2099, 3:00 pm", event.getFrom().format(DateTimeFormatter.ofPattern("MMM dd yyyy, h:mm a")));
+        assertEquals("Aug 02 2099, 3:00 pm",
+                event.getFrom().format(DateTimeFormatter.ofPattern("MMM dd yyyy, h:mm a")));
     }
 
     @Test

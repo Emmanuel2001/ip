@@ -22,7 +22,8 @@ class DeadlineTest {
         assertEquals(task, deadline.getTask());
         assertFalse(deadline.isDone());
 
-        assertEquals("Aug 02 2099, 3:00 pm", deadline.getDeadline().format(DateTimeFormatter.ofPattern("MMM dd yyyy, h:mm a")));
+        assertEquals("Aug 02 2099, 3:00 pm",
+                deadline.getDeadline().format(DateTimeFormatter.ofPattern("MMM dd yyyy, h:mm a")));
     }
 
     @Test

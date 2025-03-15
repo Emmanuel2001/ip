@@ -1,6 +1,5 @@
 package buddytalk.gui;
 
-import java.awt.*;
 import java.io.IOException;
 
 import buddytalk.BuddyTalk;
