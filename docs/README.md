@@ -28,8 +28,8 @@
 
 
 ## ✨ How to Use (Commands) ✨
-| Description                     | Command                                                                       | Example                                                   |
-|:--------------------------------|:------------------------------------------------------------------------------|:----------------------------------------------------------|
+| **Description**                 | **Command**                                                                   | **Example**                                               |
+|---------------------------------|-------------------------------------------------------------------------------|-----------------------------------------------------------|
 | Create a new ToDo Task          | `todo <description>`                                                          | `todo meeting`                                            |
 | Create a new Task with Deadline | `deadline <description> /by <date yyyy-mm-dd HHmm>`                           | `deadline meeting /by 2025-01-01 1200`                    |
 | Create a new Task for Events    | `event <description> /from <date yyyy-mm-dd HHmm> /to <date yyyy-mm-dd HHmm>` | `event meeting /from 2025-01-01 1300 /to 2025-02-02 1400` |
