@@ -18,22 +18,41 @@ public class Help extends Command {
     private static final Map<String, String> COMMAND_HELP = new HashMap<>();
     private final String helpMessage;
     static {
-        COMMAND_HELP.put("help", "Displays information about available commands. Usage: help or help [command]");
-        COMMAND_HELP.put("deadline", "Adds a task with a due date. Usage: deadline [description] /by [due date]");
-        COMMAND_HELP.put("event", "Adds an event with a start and end time. "
-                + "Usage: event [description] /from [start] /to [end]");
-        COMMAND_HELP.put("delete", "Deletes a task by its index. Usage: delete [task index]");
-        COMMAND_HELP.put("list", "Lists all current tasks. Usage: list");
-        COMMAND_HELP.put("todo", "Adds a todo task. Usage: todo [description]");
-        COMMAND_HELP.put("mark", "Marks a task as done by its index. Usage: mark [task index]");
-        COMMAND_HELP.put("unmark", "Marks a task as not done by its index. Usage: unmark [task index]");
-        COMMAND_HELP.put("find", "Finds tasks that contain the given keyword. Usage: find [keyword]");
+        COMMAND_HELP.put("help", "Displays information about available commands. \n"
+                + "Usage: help or help [command]\n"
+                + "Example: help or help deadline");
+        COMMAND_HELP.put("deadline", "Adds a task with a due date. \n"
+                + "Usage: deadline [description] /by [due date: yyyy-mm-dd hh:mm]\n"
+                + "Example: deadline meeting /by 2021-01-01 1259");
+        COMMAND_HELP.put("event", "Adds an event with a start and end time. \n"
+                + "Usage: event [description] /from [start: yyyy-mm-dd hh:mm] /to [end: yyyy-mm-dd hh:mm]\n"
+                + "Example: event meeting /from 2021-01-01 1200 /to 2021-01-01 1300");
+        COMMAND_HELP.put("delete", "Deletes a task by its index. \n"
+                + "Usage: delete [task index]\n"
+                + "Example: delete 1");
+        COMMAND_HELP.put("list", "Lists all current tasks. \n"
+                + "Usage: list \n"
+                + "Example: list");
+        COMMAND_HELP.put("todo", "Adds a todo task. \n"
+                + "Usage: todo [description] \n"
+                + "Example: todo meeting");
+        COMMAND_HELP.put("mark", "Marks a task as done by its index. \n"
+                + "Usage: mark [task index] \n"
+                + "Example: mark 1");
+        COMMAND_HELP.put("unmark", "Marks a task as not done by its index. \n"
+                + "Usage: unmark [task index] \n"
+                + "Example: unmark 1");
+        COMMAND_HELP.put("find", "Finds tasks that contain the given keyword. \n"
+                + "Usage: find [keyword] \n"
+                + "Example: find meeting");
+        COMMAND_HELP.put("bye", "Exit application. \n"
+                + "Usage: bye");
     }
 
     /**
-     * Constructs a new {@code Help} object with a specific help message to be displayed.
+     * Constructs a new {@code Help} with a specific help message to be displayed.
      *
-     * @param helpMessage The help message that provides information about a specific command or all commands.
+     * @param helpMessage The help message provides information about a specific command or all commands.
      */
     public Help(String helpMessage) {
         this.helpMessage = helpMessage;
@@ -47,7 +66,8 @@ public class Help extends Command {
      *         If the command is not found, a generic "No help available" message is returned.
      */
     public static Help getHelp(String command) {
-        String helpDescription = COMMAND_HELP.getOrDefault(command, "No help available for this command.");
+        String helpDescription = COMMAND_HELP.getOrDefault(command, "No help available for this command. "
+                + "Type 'help' to see all available commands");
         return new Help(helpDescription);
     }
 
@@ -59,8 +79,8 @@ public class Help extends Command {
      */
     public static Help getAllHelp() {
         StringBuilder helpBuilder = new StringBuilder();
-        COMMAND_HELP.forEach((cmd, description) ->
-                helpBuilder.append(cmd).append(": ").append(description).append("\n"));
+        COMMAND_HELP.forEach((command, desc) ->
+                helpBuilder.append(command).append(": ").append(desc).append("\n").append("\n"));
         return new Help(helpBuilder.toString().trim());
     }
 

@@ -23,7 +23,7 @@ public class Find extends Command {
     }
 
     /**
-     * Executes the find command. Searches the task list for tasks that match the specified
+     * Executes the find command. Searches task list for tasks that match the specified
      * keyword or phrase and returns the results to the user.
      *
      * @param tasks   The {@code TaskList} containing the current tasks.

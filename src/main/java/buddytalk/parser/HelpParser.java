@@ -30,7 +30,7 @@ public class HelpParser implements CommandParser {
         } else if (tokens.length == 2) {
             return Help.getHelp(tokens[1].strip());
         } else {
-            throw new BuddyException("The 'help' command is not formatted correctly. Usage: help or help [command]");
+            throw new BuddyException("The 'help' command is not formatted correctly. \nUsage: help or help [command]");
         }
     }
 }

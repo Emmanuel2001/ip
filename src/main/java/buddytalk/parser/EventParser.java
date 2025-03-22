@@ -28,22 +28,27 @@ public class EventParser implements CommandParser {
     public Add parse(String[] tokens) throws BuddyException {
         try {
             if (tokens.length < 2) {
-                throw new BuddyException("The description of an event cannot be empty.");
+                throw new BuddyException("The description of an event cannot be empty. \n"
+                        + "Try 'help event' for more info.");
             }
 
             String[] details = tokens[1].strip().split("/from", 2);
             if (details.length < 2 || details[1].isBlank()) {
-                throw new BuddyException("The event task must include a /from clause.");
+                throw new BuddyException("The event task must be in the format: \n"
+                        + "event description /from date (yyyy-mm-dd hh:mm) /to date (yyyy-mm-dd hh:mm). \n"
+                        + "Try 'help event' for more info.");
             }
 
             String[] times = details[1].strip().split("/to", 2);
             if (times.length < 2 || times[1].isBlank()) {
-                throw new BuddyException("The event task must include a /to clause.");
+                throw new BuddyException("The event task must include a /to clause. \n"
+                        + "Example: event description /from date (yyyy-mm-dd hh:mm) /to date (yyyy-mm-dd hh:mm). \n"
+                        + "Try 'help event' for more info.");
             }
 
             return new Add(new Event(details[0].strip(), times[0].strip(), times[1].strip(), false));
         } catch (DateTimeParseException e) {
-            throw new BuddyException("The date format is invalid. Please use 'yyyy-MM-dd HH:mm'.");
+            throw new BuddyException("The date format is invalid. Please use 'yyyy-mm-dd hh:mm'.");
         }
     }
 }

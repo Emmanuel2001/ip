@@ -20,14 +20,16 @@ public class MarkParser implements CommandParser {
     @Override
     public Mark parse(String[] tokens) throws BuddyException {
         if (tokens.length < 2) {
-            throw new BuddyException("The mark command must include a task index.");
+            throw new BuddyException("The mark command must include a task index. \n"
+                    + "Try 'help mark' for more information.");
         }
 
         try {
             int index = Integer.parseInt(tokens[1].strip()) - 1;
             return new Mark(index);
         } catch (NumberFormatException e) {
-            throw new BuddyException("Invalid task index for mark command.");
+            throw new BuddyException("Invalid task index for mark command. \n"
+                    + "Try 'help mark' for more information.");
         }
     }
 }

@@ -20,14 +20,16 @@ public class UnmarkParser implements CommandParser {
     @Override
     public Unmark parse(String[] tokens) throws BuddyException {
         if (tokens.length < 2) {
-            throw new BuddyException("The unmark command must include a task index.");
+            throw new BuddyException("The unmark command must include a task index. \n"
+                    + "Try 'help unmark' for more information.");
         }
 
         try {
             int index = Integer.parseInt(tokens[1].strip()) - 1;
             return new Unmark(index);
         } catch (NumberFormatException e) {
-            throw new BuddyException("Invalid task index for unmark command.");
+            throw new BuddyException("Invalid task index for unmark command. \n"
+                    + "Try 'help unmark' for more information.");
         }
     }
 }

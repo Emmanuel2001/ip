@@ -19,45 +19,50 @@ public class Ui {
     public Ui() {}
 
     /**
-     * Displays the list of tasks to the user.
-     * If the task list is empty, a message indicating that no tasks are present is displayed.
-     * Otherwise, all tasks in the list are printed along with their index.
+     * Generates a formatted task list message.
+     * This method displays all tasks with their index, and formats a message based
+     * on whether the task list is empty or not.
      *
-     * @param tasks The {@code ArrayList<Task>} containing tasks to display.
+     * @param tasks        The list of tasks to display.
+     * @param message The message to display if the list is empty.
+     * @param header       The header message for tasks if the list is not empty.
+     * @return A formatted string containing the task list or an empty message.
      */
-    public String displayList(ArrayList<Task> tasks) {
+    public String printMessage(ArrayList<Task> tasks, String message, String header) {
         StringBuilder sb = new StringBuilder();
         if (tasks.isEmpty()) {
-            sb.append("You have no tasks!\n");
-        } else {
-            sb.append("Here are the tasks in your list:\n");
-            for (int i = 0; i < tasks.size(); i++) {
-                sb.append((i + 1)).append(".").append(tasks.get(i).toString()).append("\n");
-            }
+            sb.append(message).append("\n");
+            return sb.toString();
+        }
+        sb.append(header).append("\n");
+        for (int i = 0; i < tasks.size(); i++) {
+            sb.append((i + 1)).append(".").append(tasks.get(i).toString()).append("\n");
         }
         return sb.toString();
     }
 
     /**
-     * Displays the tasks of tasks with proper formatting.
+     * Displays the complete list of tasks in the user's task list.
      *
-     * If the tasks is empty, the method prints a message stating that there are no matching tasks.
-     * Otherwise, it prints a formatted tasks of tasks with their index numbers.
+     * @param tasks The {@code ArrayList} of {@link Task} objects to display.
+     * @return A formatted string of the full task list.
+     */
+    public String displayList(ArrayList<Task> tasks) {
+        String message = "You have no tasks!";
+        String header = "Here are the tasks in your list:";
+        return printMessage(tasks, message, header);
+    }
+
+    /**
+     * Displays the filtered list of tasks that match certain criteria.
      *
-     * @param tasks The {@code ArrayList} of {@link Task} objects to be displayed.
-     *             Each task is shown with its index number in the tasks.
+     * @param tasks The {@code ArrayList} of {@link Task} objects to display.
+     * @return A formatted string of the filtered task list.
      */
     public String showList(ArrayList<Task> tasks) {
-        StringBuilder sb = new StringBuilder();
-        if (tasks.isEmpty()) {
-            sb.append("You have no matching tasks!\n");
-        } else {
-            sb.append("Here are the matching tasks in your tasks:\n");
-            for (int i = 0; i < tasks.size(); i++) {
-                sb.append((i + 1)).append(".").append(tasks.get(i).toString()).append("\n");
-            }
-        }
-        return sb.toString();
+        String message = "You have no matching tasks!";
+        String header = "Here are the matching tasks in your list:";
+        return printMessage(tasks, message, header);
     }
 
     /**

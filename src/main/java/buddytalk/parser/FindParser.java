@@ -20,7 +20,8 @@ public class FindParser implements CommandParser {
     @Override
     public Find parse(String[] tokens) throws BuddyException {
         if (tokens.length < 2 || tokens[1].isBlank()) {
-            throw new BuddyException("The find command must include a search term.");
+            throw new BuddyException("The find command must include a search term. \n"
+                    + "Try 'help find' for more information.");
         }
 
         return new Find(tokens[1].strip());

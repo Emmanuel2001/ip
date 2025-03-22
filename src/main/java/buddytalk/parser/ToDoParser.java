@@ -22,7 +22,8 @@ public class ToDoParser implements CommandParser {
     @Override
     public Add parse(String[] tokens) throws BuddyException {
         if (tokens.length < 2 || tokens[1].isBlank()) {
-            throw new BuddyException("The description of a todo cannot be empty.");
+            throw new BuddyException("The description of a todo cannot be empty. \n"
+                    + "Try 'help todo' for more info.");
         }
         return new Add(new ToDo(tokens[1].strip(), false));
     }

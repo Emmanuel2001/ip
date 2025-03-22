@@ -21,14 +21,16 @@ public class DeleteParser implements CommandParser {
     @Override
     public Delete parse(String[] tokens) throws BuddyException {
         if (tokens.length < 2) {
-            throw new BuddyException("The delete command must include a task index.");
+            throw new BuddyException("The delete command must include a task index. \n"
+                    + "Try 'help delete' for more info");
         }
 
         try {
             int index = Integer.parseInt(tokens[1].strip()) - 1;
             return new Delete(index);
-        } catch (NumberFormatException e) {
-            throw new BuddyException("Invalid task index for delete command.");
+        } catch (NumberFormatException | IllegalStateException e) {
+            throw new BuddyException("Invalid task index for delete command. \n"
+                    + "Try 'help delete' for more info");
         }
     }
 }

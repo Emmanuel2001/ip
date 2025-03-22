@@ -9,12 +9,12 @@ import buddytalk.ui.Ui;
 
 /**
  * Represents an abstract command to be executed.
- * Commands define specific functionality and interact with the task list, storage, and user interface.
+ * Commands define specific functionality and interact with the task list, storage, and UI.
  */
 public abstract class Command {
 
     /**
-     * Executes the command, performing specific actions such as modifying the task list,
+     * Executes the command, modifying the task list,
      * interacting with storage, or updating the user interface.
      *
      * @param tasks   The {@code TaskList} containing the current tasks managed by the application.

@@ -1,6 +1,7 @@
 package buddytalk.parser;
 
 import buddytalk.commands.List;
+import buddytalk.exceptions.BuddyException;
 
 /**
  * Parses the "list" command from user input and creates a {@code List} command.
@@ -17,7 +18,12 @@ public class ListParser implements CommandParser {
      * @return A {@code List} command that represents the "list" operation.
      */
     @Override
-    public List parse(String[] tokens) {
+    public List parse(String[] tokens) throws BuddyException {
+        if (tokens.length > 1) {
+            throw new BuddyException("The 'list' command does not accept any arguments. \n"
+                    + "Try 'list' without any extra text. \n"
+                    + "For more information, try 'help list'.");
+        }
         return new List();
     }
 }

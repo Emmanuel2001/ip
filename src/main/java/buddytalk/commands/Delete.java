@@ -2,6 +2,7 @@ package buddytalk.commands;
 
 import java.io.IOException;
 
+import buddytalk.exceptions.BuddyException;
 import buddytalk.storage.Storage;
 import buddytalk.tasks.Task;
 import buddytalk.tasks.TaskList;
@@ -34,9 +35,17 @@ public class Delete extends Command {
      */
     @Override
     public String execute(TaskList tasks, Storage storage, Ui ui) throws IOException {
-        Task temp = tasks.getTask(idx);
-        tasks.deleteTask(idx);
-        storage.saveTasks(tasks.getAllTasks());
-        return String.format("Noted. I've removed this task: \n  %s", temp);
+        try {
+            if (idx < 0 || idx >= tasks.size()) {
+                throw new BuddyException(String.format("Invalid index! \n"
+                        + "Please provide a number between 1 and %d.", tasks.size()));
+            }
+            Task temp = tasks.getTask(idx);
+            tasks.deleteTask(idx);
+            storage.saveTasks(tasks.getAllTasks());
+            return String.format("Noted. I've removed this task: \n  %s", temp);
+        } catch (BuddyException e) {
+            return e.getMessage();
+        }
     }
 }

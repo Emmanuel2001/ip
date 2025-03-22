@@ -27,17 +27,22 @@ public class DeadlineParser implements CommandParser {
     public Add parse(String[] tokens) throws BuddyException {
         try {
             if (tokens.length < 2) {
-                throw new BuddyException("The description of a deadline cannot be empty.");
+                throw new BuddyException("The description of a deadline cannot be empty. \n"
+                        + "Try 'help deadline' for more info.");
             }
 
             String[] details = tokens[1].strip().split("/by", 2);
             if (details.length < 2 || details[1].isBlank()) {
-                throw new BuddyException("The deadline task must include a /by clause.");
+                throw new BuddyException("The deadline task must be in the format: \n"
+                        + "'deadline description /by date (yyyy-mm-dd hh:mm)'.\n"
+                        + "Try 'help deadline' for more info.");
+            } else if (details[0].isBlank()) {
+                throw new BuddyException("The description cannot be blank. Try 'help deadline' for more info.");
             }
 
             return new Add(new Deadline(details[0].strip(), details[1].strip(), false));
         } catch (DateTimeParseException e) {
-            throw new BuddyException("The date format is invalid. Please use 'yyyy-MM-dd HH:mm'.");
+            throw new BuddyException("The date format is invalid. Please use 'yyyy-mm-dd hh:mm'.");
         }
     }
 }
